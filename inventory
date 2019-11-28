@@ -1,0 +1,2 @@
+[qnap]
+MYNASHOSTNAME   ansible_connection=ssh  ansible_python_interpreter=/usr/local/bin/python    ansible_user=admin

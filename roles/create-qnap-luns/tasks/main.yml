@@ -1,0 +1,31 @@
+---
+
+- name: List sbin
+  shell: ls /sbin/
+
+- name: Login to qcli
+  shell: "qcli -l user={{iscsi.qnap.username}} pw={{iscsi.qnap.password}}"
+  register: _qnap_qcli_stdout
+
+- debug: var=_qnap_qcli_stdout.stdout_lines[1]
+
+- name: Get sid fact
+  set_fact:
+    sid: "{{ _qnap_qcli_stdout.stdout_lines[1] | regex_replace('(sid)( )(is)( )') }}"
+
+- name: Create a new iSCSI target
+  shell: "qcli_iscsi -C Alias={{iscsi.alias}} Name={{iscsi.alias}} sid={{sid}}"
+  register: _qnap_iscsi_create_stdout
+
+# unfortunately at this point the iscsi target isn't created and we have to wait for a bit
+# the status will be "Ready" but it actually isn't. `qcli_iscsi -I targetID=X sid=XXXXX`
+- name: Wait for a minute before we continue
+  pause: 
+    minutes: 1
+      
+- name: Get iscsi target ID
+  set_fact:
+    iscsi_target_id: "{{ _qnap_iscsi_create_stdout.stdout_lines[0] | regex_search('\\d+') }}"
+
+- include: create-luns-and-attach.yml    
+  with_items: "{{ iscsi.pvs }}"

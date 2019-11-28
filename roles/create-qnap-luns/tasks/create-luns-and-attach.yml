@@ -1,0 +1,16 @@
+---
+- block:
+  - name: Create iSCSI LUN
+    shell: "qcli_iscsi -c Name={{item.name}} Allocation={{iscsi.allocation}} Capacity={{item.capacity}} SectorSize={{iscsi.sectorsize}} LUNType={{iscsi.luntype}} poolID={{iscsi.poolID}} sid={{sid}}"
+    register: _qnap_iscsi_create_lun_stdout
+
+  - debug: var=_qnap_iscsi_create_lun_stdout
+
+  - name: Get LUN ID
+    set_fact:
+      lun_id: "{{ _qnap_iscsi_create_lun_stdout.stdout | regex_search('\\d+') }}"
+
+  - debug: var=lun_id
+
+  - name: attach iSCSI LUN to iSCSI Target
+    shell: "qcli_iscsi -m lunID={{lun_id}} targetID={{iscsi_target_id}} sid={{sid}}"

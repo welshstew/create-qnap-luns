@@ -1,0 +1,8 @@
+---
+- hosts: qnap
+  vars_files:
+    - vars/sample-vars.yml
+  tasks:
+    - block:
+        - name: Create QNAP LUNs
+          include_role: name=create-qnap-luns

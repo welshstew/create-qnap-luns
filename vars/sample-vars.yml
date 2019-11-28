@@ -1,0 +1,70 @@
+iscsi:
+  qnap:
+    username: admin
+    password: admin
+  alias: test
+  luntype: Block
+  sectorsize: 512
+  allocation: Instant
+  poolID: 2
+  pvs:
+  - name: "test0"
+    capacity: 10
+    lun: 0
+  - name: "test1"
+    capacity: 10
+    lun: 1
+  - name: "test2"
+    capacity: 10
+    lun: 2
+  - name: "test3"
+    capacity: 10
+    lun: 3
+  - name: "test4"
+    capacity: 10
+    lun: 4
+  - name: "test5"
+    capacity: 10
+    lun: 5
+  - name: "test6"
+    capacity: 10
+    lun: 6
+  - name: "test7"
+    capacity: 10
+    lun: 7
+  - name: "test8"
+    capacity: 10
+    lun: 8
+  - name: "test9"
+    capacity: 10
+    lun: 9
+  - name: "test10"
+    capacity: 1
+    lun: 10
+  - name: "test11"
+    capacity: 1
+    lun: 11
+  - name: "test12"
+    capacity: 1
+    lun: 12
+  - name: "test13"
+    capacity: 1
+    lun: 13
+  - name: "test14"
+    capacity: 1
+    lun: 14
+  - name: "test15"
+    capacity: 1
+    lun: 15
+  - name: "test16"
+    capacity: 1
+    lun: 16
+  - name: "test17"
+    capacity: 1
+    lun: 17
+  - name: "test18"
+    capacity: 1
+    lun: 18
+  - name: "test19"
+    capacity: 1
+    lun: 19
