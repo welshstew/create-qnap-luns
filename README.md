@@ -25,6 +25,8 @@ Also please note the `inventory` file has `ansible_python_interpreter=/usr/local
 
 ## How do I run it?
 
+Make sure the `inventory` and the `vars/sample-vars.yml` are configured as you wish, then run:
+
 ```
 ansible-playbook -i inventory create-qnap-luns.yml
 ```
