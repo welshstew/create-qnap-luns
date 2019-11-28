@@ -4,8 +4,8 @@ This is a quick and dirty appraoch to automating the creation of an iSCSI target
 
 Prerequisites:
 
-. Ansible
-. Python installed on the NAS via the App Center (QPKG)
+- Ansible
+- Python installed on the NAS via the App Center (QPKG)
 
 Ensure the host where ansible is running has ssh access to the QNAP NAS:
 
